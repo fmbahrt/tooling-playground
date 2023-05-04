@@ -2,4 +2,4 @@ controller:
   image:
     registry: registry.k8s.io
     image: ingress-nginx/controller
-    tag: "v1.2.0"
+    tag: v1.2.0
