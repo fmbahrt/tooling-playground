@@ -1,0 +1,4 @@
+image:
+  registry: quay.io
+  repository: cert-manager-controller
+  tag: v1.9.1
