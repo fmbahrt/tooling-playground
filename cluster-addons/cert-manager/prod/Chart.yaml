@@ -1,9 +1,9 @@
 apiVersion: v2
-name: cert-manager-umbrella
+name: cert-manager-subchart
 type: application
 version: 1.0.0
 appVersion: 1.0.0
-depedencies:
+dependencies:
 - name: cert-manager
   version: v1.9.1
   repository: https://charts.jetstack.io
