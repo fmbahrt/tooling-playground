@@ -20,5 +20,8 @@ spec:
         path: '{{path}}'
         targetRevision: HEAD
       destination:
-        namespace: argocd
+        namespace: '{{path[1]}}'
         name: '{{path[2]}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
