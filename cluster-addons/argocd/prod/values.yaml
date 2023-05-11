@@ -6,7 +6,7 @@ argo-cd:
     enabled: false
 argo-workflows:
   server:
-    enabled: false
+    enabled: true
 argocd-apps:
   applications:
   - name: argocd-applicationsets
