@@ -4,6 +4,9 @@ argo-cd:
       type: RollingUpdate
   dex:
     enabled: false
+argo-workflows:
+  server:
+    enabled: false
 argocd-apps:
   applications:
   - name: argocd-applicationsets

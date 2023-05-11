@@ -10,3 +10,6 @@ dependencies:
 - name: argocd-apps
   version: 1.0.1
   repository: https://argoproj.github.io/argo-helm
+- name: argo-workflows
+  version: 0.27.0
+  repository: https://argoproj.github.io/argo-helm
