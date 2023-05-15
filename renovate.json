@@ -29,6 +29,7 @@
 		  "description": "ingress-nginx Regex Manager",
 		  "fileMatch": ["(^|/)values\\.yaml$"],
 		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *image: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
+		  "registryUrls: ["https://registry.k8s.io"],
 		  "datasourceTemplate": "docker"
 	  }
   ]
