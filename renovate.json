@@ -3,24 +3,33 @@
   "extends": [
     "config:base"
   ],
+  "labels": ["renovate"],
   "packageRules": [
 	{
 		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/argocd/**"],
 		"groupName": ["argocd"],
-		"labels": ["renovate", "cluster addons", "argocd"]
+		"labels": ["cluster addons", "argocd"]
 	},
 	{
 		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"groupName": ["cert-manager"],
-		"labels": ["renovate", "cluster addons", "cert-manager"]
+		"labels": ["cluster addons", "cert-manager"]
 	},
 	{
 		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/ingress-nginx/**"],
 		"groupName": ["ingress-nginx"],
-		"labels": ["renovate", "cluster addons", "ingress-nginx"]
+		"labels": ["cluster addons", "ingress-nginx"]
 	}
+  ],
+  "regexManagers": [
+	  {
+		  "description": "ingress-nginx Regex Manager",
+		  "fileMatch": ["(^|/)values\\.yaml$"],
+		  "matchStrings": ["*registry: (?<registryUrls>.*?)\n *image: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
+		  "datasourceTemplate": "helm"
+	  }
   ]
 }
