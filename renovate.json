@@ -5,7 +5,7 @@
   ],
   "packageRules": [
 	{
-		"matchManagers": ["cluster-addons"],
+		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/**/**"],
 		"groupName": ["cluster addons updates"],
 		"labels": ["renovate", "cluster addons"]
