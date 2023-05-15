@@ -4,9 +4,11 @@
     "config:base"
   ],
   "packageRules": [
-	"matchManagers": ["cluster-addons"],
-	"matchPaths": ["cluster-addons/**/**"],
-	"groupName": ["cluster addons updates"],
-	"labels": ["renovate", "cluster addons"]
+	{
+		"matchManagers": ["cluster-addons"],
+		"matchPaths": ["cluster-addons/**/**"],
+		"groupName": ["cluster addons updates"],
+		"labels": ["renovate", "cluster addons"]
+	}
   ]
 }
