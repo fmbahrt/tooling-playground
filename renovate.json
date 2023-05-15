@@ -28,7 +28,7 @@
 	  {
 		  "description": "ingress-nginx Regex Manager",
 		  "fileMatch": ["(^|/)values\\.yaml$"],
-		  "matchStrings": [" *registry: (?P<registryUrls>.*?)\n *image: (?P<depName>.*?)\n *tag: (?P<currentValue>.*)\n"],
+		  "matchStrings": [" *registry: (?<registryUrls>.*?)\n *image: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
 		  "datasourceTemplate": "helm"
 	  }
   ]
