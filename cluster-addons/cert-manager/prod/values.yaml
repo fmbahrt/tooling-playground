@@ -2,4 +2,4 @@ cert-manager:
   image:
     registry: quay.io
     repository: jetstack/cert-manager-controller
-    tag: v1.9.1
+    tag: v1.12.0
