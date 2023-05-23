@@ -16,10 +16,10 @@ on:
     - cron: "0 * * * *"
   push:
     branches: ["main"]
-    paths:
-      - .github/renovate-bot.json
-      - .github/renovate.json
-      - .github/renovate/**.json
+      #    paths:
+      #      - .github/renovate-bot.json
+      #      - .github/renovate.json
+      #      - .github/renovate/**.json
 
 env:
   LOG_LEVEL: debug
