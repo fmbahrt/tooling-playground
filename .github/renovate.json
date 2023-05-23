@@ -3,6 +3,10 @@
   "extends": [
     "config:base"
   ],
+  "platform": "github",
+  "onboarding": "false",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotifications"],
   "labels": ["renovate"],
   "packageRules": [
 	{
