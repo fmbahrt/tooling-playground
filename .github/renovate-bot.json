@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "username": "mr. bot",
-  "gitAuthor": "mr-bot@users.noreply.github.com>",
+  "username": "tooling-playground-renovate",
+  "gitAuthor": "Playground Renovate Bot <123456+self-hosted-renovate[bot]@users.noreply.github.enterprise.com>",
   "repositories": ["fmbahrt/tooling-playground"]
 }
