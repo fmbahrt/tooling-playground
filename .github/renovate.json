@@ -21,7 +21,7 @@
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"groupName": ["cert-manager"],
 		"labels": ["cluster addons", "cert-manager"],
-		"depNameTemplate": "{{{replace my.registry quay.io depName}}}"
+		"replacementNameTemplate": "{{{replace 'my.registry' 'quay.io' packageName}}}"
 	},
 	{
 		"matchManagers": ["helm-values", "helmv3", "regex"],
