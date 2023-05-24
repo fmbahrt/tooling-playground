@@ -11,13 +11,6 @@
   "labels": ["renovate"],
   "packageRules": [
 	{
-		"matchDatasources": ["docker", "regex"],
-		"registryUrls": [
-			"https://registry.k8s.io/",
-			"https://quay.io/"
-		]
-	},
-	{
 		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/argocd/**"],
 		"groupName": ["argocd"],
@@ -27,7 +20,10 @@
 		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"groupName": ["cert-manager"],
-		"labels": ["cluster addons", "cert-manager"]
+		"labels": ["cluster addons", "cert-manager"],
+		"registryUrls": [
+			"https://quay.io/"
+		]
 	},
 	{
 		"matchManagers": ["helm-values", "helmv3", "regex"],
