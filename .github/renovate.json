@@ -11,6 +11,13 @@
   "labels": ["renovate"],
   "packageRules": [
 	{
+		"matchDatasources": ["docker", "regex"],
+		"registryUrls": [
+			"https://registry.k8s.io/",
+			"https://quay.io/"
+		]
+	},
+	{
 		"matchManagers": ["helm-values", "helmv3"],
 		"matchPaths": ["cluster-addons/argocd/**"],
 		"groupName": ["argocd"],
