@@ -29,7 +29,7 @@
 		"labels": ["cluster addons", "ingress-nginx"]
 	},
 	{
-		"matchDatasources": ["docker"],
+		"matchDatasources": ["helm-values"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"replacementNameTemplate": "quay.io/{{{packageName}}}"
 	}
