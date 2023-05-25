@@ -11,40 +11,49 @@
   "labels": ["renovate"],
   "packageRules": [
 	{
-		"matchManagers": ["helm-values", "helmv3"],
+		"matchPaths": ["cluster-addons/**"],
+		"labels": ["cluster addons"]
+	},
+	{
+		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/argocd/**"],
 		"groupName": ["argocd"],
-		"labels": ["cluster addons", "argocd"]
+		"labels": ["argocd"]
 	},
 	{
 		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"groupName": ["cert-manager"],
-		"labels": ["cluster addons", "cert-manager"]
+		"labels": ["cert-manager"]
 	},
 	{
-		"matchManagers": ["helm-values", "helmv3", "regex"],
+		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/ingress-nginx/**"],
 		"groupName": ["ingress-nginx"],
-		"labels": ["cluster addons", "ingress-nginx"]
-	},
-	{
-		"matchDatasources": ["docker"],
-		"matchPaths": ["cluster-addons/cert-manager/**"],
-		"registryUrls": ["https://quay.io"]
+		"labels": ["ingress-nginx"]
 	}
   ],
   "regexManagers": [
 	  {
 		  "description": "ingress-nginx Regex Manager",
-		  "fileMatch": ["(^|/)values\\.yaml$"],
+		  "fileMatch": ["cluster-addons\/ingress-nginx\/.*\/values\.yaml$"],
 		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *image: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
+		  "packageNameTemplate": "{{{depName}}}",
+		  "registryUrlTemplate": "registry.k8s.io",
 		  "datasourceTemplate": "docker"
 	  },
 	  {
 		  "description": "cert-manager Regex Manager",
-		  "fileMatch": ["(^|/)values\\.yaml$"],
+		  "fileMatch": ["cluster-addons\/cert-manager\/.*\/values\.yaml$"],
 		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *repository: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
+		  "packageNameTemplate": "{{{depName}}}",
+		  "registryUrlTemplate": "quay.io",
+		  "datasourceTemplate": "docker"
+	  },
+	  {
+		  "description": "argocd Regex Manager",
+		  "fileMatch": ["cluster-addons\/argocd\/.*\/values\.yaml$"],
+		  "matchStrings": [" *repository: (?<registryUrl>[a-zA-Z.]+)\/(?<depName>[a-zA-Z\/]+)\n *tag: (?<currentValue>.*)\n"],
 		  "packageNameTemplate": "{{{depName}}}",
 		  "registryUrlTemplate": "quay.io",
 		  "datasourceTemplate": "docker"

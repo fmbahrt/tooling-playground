@@ -4,6 +4,11 @@ argo-cd:
       type: RollingUpdate
   dex:
     enabled: false
+  controller:
+    image:
+      repository: my.registry/argoproj/argocd
+      tag: v1.7.2
+
 argo-workflows:
   server:
     enabled: true
