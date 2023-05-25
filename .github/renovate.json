@@ -31,7 +31,7 @@
 	{
 		"matchDatasources": ["helm-values"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
-		"replacementNameTemplate": "quay.io/{{{packageName}}}"
+		"replacementNameTemplate": "{{{replace 'my\\.registry/' 'quay\\.io/' packageName}}}"
 	}
   ],
   "regexManagers": [
