@@ -17,7 +17,7 @@
 		"labels": ["cluster addons", "argocd"]
 	},
 	{
-		"matchManagers": ["helm-values", "helmv3"],
+		"matchManagers": ["helm-values", "helmv3", "regex"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"groupName": ["cert-manager"],
 		"labels": ["cluster addons", "cert-manager"]
@@ -39,6 +39,13 @@
 		  "description": "ingress-nginx Regex Manager",
 		  "fileMatch": ["(^|/)values\\.yaml$"],
 		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *image: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
+		  "datasourceTemplate": "docker"
+	  },
+	  {
+		  "description": "cert-manager Regex Manager",
+		  "fileMatch": ["(^|/)values\\.yaml$"],
+		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *repository: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
+		  "packageNameTemplate": "quay.io/{{{depName}}}:{{{currentValue}}}",
 		  "datasourceTemplate": "docker"
 	  }
   ]
