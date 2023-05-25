@@ -31,7 +31,7 @@
 	{
 		"matchDatasources": ["docker"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
-		"replacementNameTemplate": "{{{replace 'my\\.registry/' 'quay\\.io/' packageName}}}"
+		"registryUrls": ["https://quay.io"]
 	}
   ],
   "regexManagers": [
@@ -46,7 +46,6 @@
 		  "fileMatch": ["(^|/)values\\.yaml$"],
 		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *repository: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
 		  "packageNameTemplate": "{{{depName}}}:{{{currentValue}}}",
-		  "registryUrls": ["https://quay.io"],
 		  "datasourceTemplate": "docker"
 	  }
   ]
