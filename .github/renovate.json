@@ -23,7 +23,7 @@
 		"labels": ["cluster addons", "cert-manager"]
 	},
 	{
-		"matchManagers": ["helm-values", "helmv3", "regex"],
+		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/ingress-nginx/**"],
 		"groupName": ["ingress-nginx"],
 		"labels": ["cluster addons", "ingress-nginx"]
