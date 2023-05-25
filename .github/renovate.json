@@ -45,7 +45,8 @@
 		  "description": "cert-manager Regex Manager",
 		  "fileMatch": ["(^|/)values\\.yaml$"],
 		  "matchStrings": [" *registry: (?<registryUrl>.*?)\n *repository: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
-		  "packageNameTemplate": "{{{depName}}}:{{{currentValue}}}",
+		  "packageNameTemplate": "{{{depName}}}",
+		  "registryUrlTemplate": "quay.io",
 		  "datasourceTemplate": "docker"
 	  }
   ]
