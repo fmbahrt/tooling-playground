@@ -39,21 +39,21 @@
 		  "description": "ingress-nginx Regex Manager",
 		  "fileMatch": ["cluster-addons\/ingress-nginx\/.*\/values\.yaml$"],
 		  "matchStrings": [" *image: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
-		  "registryUrlTemplate": "registry.k8s.io",
+		  "registryUrlTemplate": "https://registry.k8s.io",
 		  "datasourceTemplate": "docker"
 	  },
 	  {
 		  "description": "cert-manager Regex Manager",
 		  "fileMatch": ["cluster-addons\/cert-manager\/.*\/values\.yaml$"],
 		  "matchStrings": [" *repository: (?<depName>.*?)\n *tag: (?<currentValue>.*)\n"],
-		  "registryUrlTemplate": "quay.io",
+		  "registryUrlTemplate": "https://quay.io",
 		  "datasourceTemplate": "docker"
 	  },
 	  {
 		  "description": "argocd Regex Manager",
 		  "fileMatch": ["cluster-addons\/argocd\/.*\/values\.yaml$"],
 		  "matchStrings": [" *repository: [a-zA-Z.]+\/(?<depName>[a-zA-Z\/]+)\n *tag: (?<currentValue>.*)\n"],
-		  "registryUrlTemplate": "quay.io",
+		  "registryUrlTemplate": "https://quay.io",
 		  "datasourceTemplate": "docker"
 	  }
   ]
