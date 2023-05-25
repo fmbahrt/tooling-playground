@@ -9,6 +9,7 @@
   "suppressNotifications": ["prIgnoreNotifications"],
   "recreateClosed": "true",
   "labels": ["renovate"],
+  "enabledManagers": ["helmv3", "regex"],
   "packageRules": [
 	{
 		"matchPaths": ["cluster-addons/**"],
