@@ -9,6 +9,8 @@ on:
         required: false
   push:
     branches: ["main"]
+    paths:
+      - 'cluster-addons/*/*'
 
 jobs:
   synchronize:
