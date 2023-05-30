@@ -90,8 +90,7 @@ if __name__ == '__main__':
 
     image_mappings_path = root_path/ "workflow_docker_mappings.yaml"
     with open(image_mappings_path) as json_file:
-        image_mappings = json.load(json_file)
-        print(image_mappings)
+        declared_public_images = json.load(json_file)
 
     # Assert missing images in mappings
     if args.check_declared_images:
