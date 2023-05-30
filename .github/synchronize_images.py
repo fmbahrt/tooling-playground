@@ -22,7 +22,7 @@ def initialize_engine(engine, root):
 def fetch_images_helm(root):
     results = run(["helm", "template", root, "-f", root / "values.yaml"], capture_output=True, text=True).stdout
     
-    rendered_images = set([])
+    rendered_images = {}
     
     for line in iter(results.splitlines()):
         if "image:" in line:
@@ -31,7 +31,8 @@ def fetch_images_helm(root):
             image = image.replace("image:", "")
             image = image.replace('''"''', "")
             image = image.strip()
-            rendered_images.add(image)
+            repo, version = image.split(':')
+            rendered_images[repo] = version
 
     return rendered_images
 
@@ -43,8 +44,10 @@ def fetch_images(engine, root):
         raise NotImplementedError("Engine not implemented")
 
 
-def synchronize_images(image_mappings):
-    for private, public in image_mappings.items():
+def synchronize_images(image_mappings, rendered_images):
+    for private_repo, public_repo in image_mappings.items():
+        private = private_repo + ":" + rendered_images[public_repo]
+        public = public_repo + ":" + rendered_images[public_repo]
         # First we check if we try to sync an image that already exists in our target repository
         #run(["docker", "manifest", "inspect", private], check=True)
         print(f"docker manifest inspect {private}")
@@ -55,6 +58,9 @@ def synchronize_images(image_mappings):
 
 
 if __name__ == '__main__':
+    """
+    TODO: We do not care about image versions for images in the repository mapping YAML file.
+    """
     parser = argparse.ArgumentParser(
         description="Synchronize Docker images between registries.",
         epilog="Maintained by devops@supwiz.com",
@@ -93,18 +99,18 @@ if __name__ == '__main__':
         image_mappings = json.load(json_file)
     declared_public_images = set(image_mappings.keys())
 
+    # Start by initializing the engine
+    initialize_engine(args.engine, root_path)
+
+    # Fetch all rendered images
+    rendered_images = fetch_images(args.engine, root_path) 
+
     # Assert missing images in mappings
     if args.check_declared_images:
 
-        # Start by initializing the engine
-        initialize_engine(args.engine, root_path)
-
-        # Fetch all rendered images
-        rendered_images = fetch_images(args.engine, root_path) 
-
-        image_diff = rendered_images - declared_public_images 
-        assert len(image_diff) == 0, f"Declared images does not cover the rendered images. Expected {rendered_images} got {declared_public_images}."
+        image_diff = set(rendered_images.keys()) - declared_public_images 
+        assert len(image_diff) == 0, f"Declared images does not cover the rendered images. Expected {set(rendered_images.keys())} got {declared_public_images}."
 
     # Synchronize images
     if args.synchronize:
-        synchronize_images(image_mappings)
+        synchronize_images(image_mappings, rendered_images)
