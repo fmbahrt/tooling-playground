@@ -103,7 +103,7 @@ if __name__ == '__main__':
         rendered_images = fetch_images(args.engine, root_path) 
 
         image_diff = rendered_images - declared_public_images 
-        assert len(image_diff) == 0, f"Declared images does not cover the rendered images. Got diff {image_diff}."
+        assert len(image_diff) == 0, f"Declared images does not cover the rendered images. Expected {rendered_images} got {declared_public_images}."
 
     # Synchronize images
     if args.synchronize:
