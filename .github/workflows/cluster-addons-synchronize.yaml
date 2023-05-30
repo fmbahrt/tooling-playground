@@ -19,18 +19,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
 
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v4
 
-      - name: Install dependencies
-        run: |
-          # Setup helm dependencies
-          curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-          sudo apt-get install apt-transport-https --yes
-          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-          sudo apt-get update -y
-          sudo apt-get install -y helm
+      - name: Setup Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.11.1
 
       - name: Synchronize
         run: |
+          docker pull public.ecr.aws/docker/library/redis:7.0.11-alpine
           python .github/synchronize_images.py
