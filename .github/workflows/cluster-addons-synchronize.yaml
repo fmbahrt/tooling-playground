@@ -33,4 +33,4 @@ jobs:
 
       - name: Synchronize
         run: |
-          python .workflows/synchronize_images.py
+          python .github/synchronize_images.py
