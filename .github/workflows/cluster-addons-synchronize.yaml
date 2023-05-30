@@ -29,5 +29,4 @@ jobs:
 
       - name: Synchronize
         run: |
-          docker pull public.ecr.aws/docker/library/redis:7.0.11-alpine
-          python .github/synchronize_images.py
+          python .github/synchronize_images.py cluster-addons/argocd/prod --engine helm --check-declared-images --synchronize

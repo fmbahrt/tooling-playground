@@ -1,0 +1,7 @@
+{
+  "my.registry/argoproj/workflow-controller:v3.4.7": "quay.io/argoproj/workflow-controller:v3.4.7",
+  "my.registry/argoproj/argocd:v1.7.2": "quay.io/argoproj/argocd:v1.7.2",
+  "my.registry/argoproj/argocli:v3.4.7": "quay.io/argoproj/argocli:v3.4.7",
+  "my.registry/argoproj/argocd:v2.7.2": "quay.io/argoproj/argocd:v2.7.2",
+  "my.registry/redis:7.0.11-alpine": "public.ecr.aws/docker/library/redis:7.0.11-alpine"
+}
