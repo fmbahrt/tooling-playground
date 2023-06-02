@@ -3,4 +3,4 @@ ingress-nginx:
     image:
       registry: my.registry
       image: ingress-nginx/controller
-      tag: v1.2.0
+      tag: v1.8.0
