@@ -12,26 +12,34 @@
   "enabledManagers": ["helmv3", "regex"],
   "packageRules": [
 	{
+		"matchPaths": ["*"],
+		"enabled": false
+	},
+	{
 		"matchPaths": ["cluster-addons/**"],
-		"labels": ["cluster addons"]
+		"labels": ["cluster addons"],
+		"enabled": true
 	},
 	{
 		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/argocd/**"],
 		"groupName": ["argocd"],
-		"labels": ["argocd"]
+		"labels": ["argocd"],
+		"enabled": true
 	},
 	{
 		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/cert-manager/**"],
 		"groupName": ["cert-manager"],
-		"labels": ["cert-manager"]
+		"labels": ["cert-manager"],
+		"enabled": true
 	},
 	{
 		"matchManagers": ["helmv3", "regex"],
 		"matchPaths": ["cluster-addons/ingress-nginx/**"],
 		"groupName": ["ingress-nginx"],
-		"labels": ["ingress-nginx"]
+		"labels": ["ingress-nginx"],
+		"enabled": true
 	}
   ],
   "regexManagers": [
