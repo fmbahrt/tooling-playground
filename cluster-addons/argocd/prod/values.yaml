@@ -7,7 +7,7 @@ argo-cd:
   controller:
     image:
       repository: my.registry/argoproj/argocd
-      tag: v1.7.2
+      tag: v2.7.3
 
 argo-workflows:
   server:
